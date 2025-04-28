@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Attendance</title>
+</head>
+<body>
+    <h1>Facial Attendance System</h1>
+
+    <h2>Employees</h2>
+    <ul>
+        {% for employee in employees %}
+        <li>
+            <img src="{{ employee.photo.url }}" alt="{{ employee.name }}" width="100">
+            {{ employee.name }} 
+            <a href="{% url 'mark_attendance' employee.id %}">Mark Attendance</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
